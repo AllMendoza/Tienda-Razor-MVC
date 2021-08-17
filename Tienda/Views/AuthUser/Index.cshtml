@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Tienda.Models.Modelos.AuthUser>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="~/js/DataTables/datatables.min.css" />
+</head>
+<body>
+    <h1>Datos de acceso</h1>
+
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table id="datatable" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdUser)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Pwd)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.salt)
+                </th>
+                <th style="width:20%" >
+                    @Html.DisplayNameFor(model => model.Password)
+                </th>
+                <th style="width:20%" >
+                    @Html.DisplayNameFor(model => model.saltt)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdUser)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Pwd)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.salt)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Password)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.saltt)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+<script type="text/javascript" src="~/js/DataTables/datatables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $.noConflict();
+        var table = $('#datatable').DataTable();
+    });</script>

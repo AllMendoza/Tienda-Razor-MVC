@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Tienda.Models.Modelos.Registro>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="~/js/DataTables/datatables.min.css" />
+</head>
+<body>
+    <h1>Index</h1>
+
+    <table id="datatable" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Usuario)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Movimiento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DatoAnterior)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DatoCambiado)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Usuario)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Movimiento)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DatoAnterior)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DatoCambiado)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> 
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+<script type="text/javascript" src="~/js/DataTables/datatables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $.noConflict();
+        var table = $('#datatable').DataTable();
+    });</script>
